@@ -39,8 +39,11 @@ namespace WindowsFormsApp1
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        { 
+       
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
             booking = new List<BookingInfo>();
             string[] lines = File.ReadAllLines("../../../BookingInfo.txt");
             foreach (string line in lines)
@@ -59,19 +62,19 @@ namespace WindowsFormsApp1
             //dataGridView1.Columns.Add("age", "age");
             //dataGridView1.Columns.Add("names", "names");
             //dataGridView1.Columns.Add("age", "age");
-            foreach (string dogs in lines )
-                {
-                    int rowIdx = dataGridView1.Rows.Add();
-                    dataGridView1.Rows[rowIdx].Cells["First Name"].Value = booking;
-                    dataGridView1.Rows[rowIdx].Cells["Last Name"].Value = booking;
-                    dataGridView1.Rows[rowIdx].Cells["Phone Number"].Value = booking;
-                    dataGridView1.Rows[rowIdx].Cells["Email"].Value = booking;
-                    dataGridView1.Rows[rowIdx].Cells["Seats"].Value = booking;
+            foreach (string dogs in lines)
+            {
+                int rowIdx = dataGridView1.Rows.Add();
+                dataGridView1.Rows[rowIdx].Cells["First Name"].Value = booking;
+                dataGridView1.Rows[rowIdx].Cells["Last Name"].Value = booking;
+                dataGridView1.Rows[rowIdx].Cells["Phone Number"].Value = booking;
+                dataGridView1.Rows[rowIdx].Cells["Email"].Value = booking;
+                dataGridView1.Rows[rowIdx].Cells["Seats"].Value = booking;
 
 
 
 
-                
+
             }
         }
     }
