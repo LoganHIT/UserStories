@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        private List<Dog> dogs;
+        
         public Form1()
         {
             InitializeComponent();
@@ -41,12 +41,12 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         { 
-            dogs = new List<Dog>();
+            booking = new List<BookingInfo>();
             string[] lines = File.ReadAllLines("../../../BookingInfo.txt");
             foreach (string line in lines)
             {
                 string[] data = line.Split(',');
-                dogs.Add(new Dog(data[0], int.Parse(data[1])));
+                booking.Add(new BookingInfo(data[0], int.Parse(data[1])));
 
 
 
@@ -63,10 +63,10 @@ namespace WindowsFormsApp1
                 {
                     int rowIdx = dataGridView1.Rows.Add();
                     dataGridView1.Rows[rowIdx].Cells["First Name"].Value = booking;
-                    dataGridView1.Rows[rowIdx].Cells["Last Name"].Value = dogs;
-                    dataGridView1.Rows[rowIdx].Cells["Phone Number"].Value = dogs;
-                    dataGridView1.Rows[rowIdx].Cells["Email"].Value = dogs;
-                    dataGridView1.Rows[rowIdx].Cells["Seats"].Value = dogs;
+                    dataGridView1.Rows[rowIdx].Cells["Last Name"].Value = booking;
+                    dataGridView1.Rows[rowIdx].Cells["Phone Number"].Value = booking;
+                    dataGridView1.Rows[rowIdx].Cells["Email"].Value = booking;
+                    dataGridView1.Rows[rowIdx].Cells["Seats"].Value = booking;
 
 
 
