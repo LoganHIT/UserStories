@@ -48,8 +48,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+
+            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+
             this.button1 = new System.Windows.Forms.Button();
             this.textLastName = new System.Windows.Forms.TextBox();
+
             this.SuspendLayout();
             // 
             // textFirstName
@@ -208,11 +214,30 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 147);
+            this.label11.Location = new System.Drawing.Point(25, 147);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(30, 13);
             this.label11.TabIndex = 19;
             this.label11.Text = "Date";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(633, 319);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(111, 54);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Show client information";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(362, 32);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(400, 205);
+            this.dataGridView1.TabIndex = 21;
             // 
             // button1
             // 
@@ -236,8 +261,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.button2);
+
             this.Controls.Add(this.textLastName);
             this.Controls.Add(this.button1);
+
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.label10);
@@ -261,6 +291,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,8 +319,13 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label11;
+
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textLastName;
+
     }
 }
 
