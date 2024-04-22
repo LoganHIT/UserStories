@@ -22,9 +22,9 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            
+            bookingInfo = new List<BookingInfo>();
 
-
+            BookingInfo.ReadFromFile(@"../../../BookingInfo.txt", bookingInfo);
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -52,18 +52,8 @@ namespace WindowsFormsApp1
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-
-            bookingInfo = new List<BookingInfo>();
-            string[] lines = File.ReadAllLines("../../../BookingInfo.txt");
-            foreach (string line in lines)
-            {
-                //need to figure this shit out to match with txt file
-                string[] data = lines;
-                bookingInfo.Add(new BookingInfo(data[0], data[1], data[2], data[3], Convert.ToInt32(data[4])));
-
-
-
-            }
+            this.dataGridView1.Rows.Clear();
+            this.dataGridView1.Columns.Clear();
             dataGridView1.Columns.Add("First Name", "First Name");
             dataGridView1.Columns.Add("Last Name", "Last Name");
             dataGridView1.Columns.Add("Phone Number", "Phone Number");
@@ -72,40 +62,32 @@ namespace WindowsFormsApp1
             //dataGridView1.Columns.Add("age", "age");
             //dataGridView1.Columns.Add("names", "names");
             //dataGridView1.Columns.Add("age", "age");
-            foreach (string bookingInfo in lines)
+            foreach (BookingInfo booking in bookingInfo)
             {
                 int rowIdx = dataGridView1.Rows.Add();
-                dataGridView1.Rows[rowIdx].Cells["First Name"].Value = bookingInfo;
-                dataGridView1.Rows[rowIdx].Cells["Last Name"].Value = bookingInfo;
-                dataGridView1.Rows[rowIdx].Cells["Phone Number"].Value = bookingInfo;
-                dataGridView1.Rows[rowIdx].Cells["Email"].Value = bookingInfo;
-                dataGridView1.Rows[rowIdx].Cells["Seats"].Value = bookingInfo;
-
-
-
-
-
+                dataGridView1.Rows[rowIdx].Cells["First Name"].Value = booking.FirstName;
+                dataGridView1.Rows[rowIdx].Cells["Last Name"].Value = booking.LastName;
+                dataGridView1.Rows[rowIdx].Cells["Phone Number"].Value = booking.PhoneNum;
+                dataGridView1.Rows[rowIdx].Cells["Email"].Value = booking.Email;
+                dataGridView1.Rows[rowIdx].Cells["Seats"].Value = booking.Seats;
             }
         }
         public void button1_Click(object sender, EventArgs e)
         {
+            int id = bookingInfo.Count + 1;
             string name = textFirstName.Text;
             string lastName = textLastName.Text;
             string phoneNum = textPhNum.Text;
             string email = textEmail.Text;
             int seats = Convert.ToInt32(textSeats.Text);
-            bookingInfo.Add( new BookingInfo(name, lastName, phoneNum, email, seats));
-            Save(name, lastName, phoneNum, email, seats);
+            bookingInfo.Add( new BookingInfo(id, name, lastName, phoneNum, email, seats));
+            Save(id, name, lastName, phoneNum, email, seats);
             
         }
-        static void Save(string name, string lastName, string phoneNum, string email, int seats)
+        static void Save(int id, string name, string lastName, string phoneNum, string email, int seats)
         {
             StreamWriter sw = new StreamWriter(@"../../../BookingInfo.txt");
-            sw.WriteLine(name);
-            sw.WriteLine(lastName);
-            sw.WriteLine(phoneNum);
-            sw.WriteLine(email);
-            sw.WriteLine(seats);
+            sw.WriteLine(id + "," + name + "," + lastName + "," + phoneNum + "," + email + "," + seats);
             sw.Close();
 
         }
