@@ -86,8 +86,8 @@ namespace WindowsFormsApp1
         }
         static void Save(int id, string name, string lastName, string phoneNum, string email, int seats)
         {
-            StreamWriter sw = new StreamWriter(@"../../../BookingInfo.txt");
-            sw.WriteLine(id + "," + name + "," + lastName + "," + phoneNum + "," + email + "," + seats);
+            StreamWriter sw = new StreamWriter(@"../../../BookingInfo.txt", true);
+            sw.Write("\n" + id + "," + name + "," + lastName + "," + phoneNum + "," + email + "," + seats);
             sw.Close();
 
         }
